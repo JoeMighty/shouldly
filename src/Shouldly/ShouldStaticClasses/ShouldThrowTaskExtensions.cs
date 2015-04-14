@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace Shouldly
 {
@@ -22,15 +23,15 @@ namespace Shouldly
         }
 
         /*** Should.Throw(Func<Task>) ***/
-        public static TException Throw<TException>(Func<Task> actual) where TException : Exception
+        public static TException Throw<TException>([InstantHandle] Func<Task> actual) where TException : Exception
         {
             return Throw<TException>(actual, () => null);
         }
-        public static TException Throw<TException>(Func<Task> actual, string customMessage) where TException : Exception
+        public static TException Throw<TException>([InstantHandle] Func<Task> actual, string customMessage) where TException : Exception
         {
             return Throw<TException>(actual, () => customMessage);
         }
-        public static TException Throw<TException>(Func<Task> actual, Func<string> customMessage) where TException : Exception
+        public static TException Throw<TException>([InstantHandle] Func<Task> actual, Func<string> customMessage) where TException : Exception
         {
             return Throw<TException>(actual, ShouldlyConfiguration.DefaultTaskTimeout, customMessage);
         }
@@ -54,17 +55,17 @@ namespace Shouldly
         }
 
         /*** Should.Throw(Func<Task>, TimeSpan) ***/
-        public static TException Throw<TException>(Func<Task> actual, TimeSpan timeoutAfter)
+        public static TException Throw<TException>([InstantHandle] Func<Task> actual, TimeSpan timeoutAfter)
             where TException : Exception
         {
             return Throw<TException>(actual, timeoutAfter, () => null);            
         }
-        public static TException Throw<TException>(Func<Task> actual, TimeSpan timeoutAfter, string customMessage)
+        public static TException Throw<TException>([InstantHandle] Func<Task> actual, TimeSpan timeoutAfter, string customMessage)
             where TException : Exception
         {
             return Throw<TException>(actual, timeoutAfter, () => customMessage);
         }
-        public static TException Throw<TException>(Func<Task> actual, TimeSpan timeoutAfter, Func<string> customMessage) where TException : Exception
+        public static TException Throw<TException>([InstantHandle] Func<Task> actual, TimeSpan timeoutAfter, Func<string> customMessage) where TException : Exception
         {
             try
             {
