@@ -79,6 +79,15 @@ namespace Shouldly
         }
     }
 
+    internal class ExpectedShouldlyNotThrowMessage : ShouldlyMessage
+    {
+        public ExpectedShouldlyNotThrowMessage(object expected, string exceptionMessage, Func<string> customMessage)
+        {
+            ShouldlyAssertionContext = new ShouldNotThrowAssertionContext(expected, null, exceptionMessage);
+            if (customMessage != null) ShouldlyAssertionContext.CustomMessage = customMessage();
+        }
+    }
+
 #if net40
     internal class CompleteInShouldlyMessage : ShouldlyMessage
     {
@@ -123,7 +132,8 @@ namespace Shouldly
             new ShouldContainPredicateMessageGenerator(), 
             new ShouldBeIgnoringOrderMessageGenerator(), 
             new ShouldSatisfyAllConditionsMessageGenerator(),
-            new ShouldBeSubsetOfMessageGenerator()
+            new ShouldBeSubsetOfMessageGenerator(),
+            new ShouldNotThrowMessageGenerator()
         };
         private IShouldlyAssertionContext _shouldlyAssertionContext;
 

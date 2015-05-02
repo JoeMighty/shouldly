@@ -23,9 +23,9 @@ namespace Shouldly.Tests.ShouldNotThrow
         {
             get
             {
-                return @"Should not throw System.RankException but does
-Additional Info:
-Some additional context";
+                return @"Should should not throw but threw System.RankException" +
+                        "Additional Info:" +
+                        "Some additional context";
             }
         }
 
