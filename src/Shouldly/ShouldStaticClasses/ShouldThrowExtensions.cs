@@ -8,6 +8,21 @@ namespace Shouldly
     [ShouldlyMethods]
     public static partial class Should
     {
+        public static TException ShouldThrow<TException>(this Action actual) where TException : Exception
+        {
+            return Throw<TException>(actual, () => null);
+        }
+
+        public static TException ShouldThrow<TException>(this Action actual, string customMessage) where TException : Exception
+        {
+            return Throw<TException>(actual, () => customMessage);
+        }
+
+        public static TException ShouldThrow<TException>(this Action actual, Func<string> customMessage) where TException : Exception
+        {
+            return Throw<TException>(actual, customMessage);
+        }
+
         public static TException Throw<TException>([InstantHandle] Action actual) where TException : Exception
         {
             return Throw<TException>(actual, () => null);
