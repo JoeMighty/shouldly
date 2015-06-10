@@ -33,13 +33,12 @@ Some additional context";
 
         protected override void ShouldPass()
         {
-            var ex = Should.Throw<InvalidOperationException>(() =>
-            {
-                var task = Task.Factory.StartNew<string>(() => { throw new InvalidOperationException(); },
-                    CancellationToken.None, TaskCreationOptions.None,
-                    TaskScheduler.Default);
-                return task;
-            });
+            var task = Task.Factory.StartNew<string>(() => { throw new InvalidOperationException(); },
+                CancellationToken.None, TaskCreationOptions.None,
+                TaskScheduler.Default);
+
+            var ex = task.ShouldThrow<InvalidOperationException>();
+
             ex.ShouldNotBe(null);
             ex.ShouldBeOfType<InvalidOperationException>();
         }
