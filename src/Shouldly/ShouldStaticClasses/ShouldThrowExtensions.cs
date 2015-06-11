@@ -47,6 +47,14 @@ namespace Shouldly
             throw new ShouldAssertException(new ExpectedShouldlyMessage(typeof(TException), customMessage).ToString());
         }
 
+        public static void ShouldNotThrow(this Action action)
+        {
+            NotThrow(action, () => null);
+        }
+        public static void ShouldNotThrow(this Action action, string customMessage)
+        {
+            NotThrow(action, () => customMessage);
+        }
         public static void NotThrow([InstantHandle] Action action)
         {
             NotThrow(action, () => null);
@@ -67,6 +75,14 @@ namespace Shouldly
             }
         }
 
+        public static T ShouldNotThrow<T>(this Func<T> action)
+        {
+            return NotThrow(action, () => null);
+        }
+        public static T ShouldNotThrow<T>(this Func<T> action, string customMessage)
+        {
+            return NotThrow(action, () => customMessage);
+        }
         public static T NotThrow<T>([InstantHandle] Func<T> action)
         {
             return NotThrow(action, () => null);
