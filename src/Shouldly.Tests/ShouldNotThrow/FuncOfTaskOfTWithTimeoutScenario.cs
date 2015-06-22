@@ -18,8 +18,9 @@ namespace Shouldly.Tests.ShouldNotThrow
             },
                 CancellationToken.None, TaskCreationOptions.None,
                 TaskScheduler.Default);
-            var ex = Should.Throw<ShouldCompleteInException>(() => 
-                Should.NotThrow(() => task, TimeSpan.FromSeconds(0.5), "Some additional context"));
+            var ex = Should.Throw<ShouldCompleteInException>(() =>
+                task.ShouldNotThrow(TimeSpan.FromSeconds(0.5), "Some additional context"));
+
             ex.Message.ShouldContainWithoutWhitespace(ChuckedAWobblyErrorMessage);
         }
 
