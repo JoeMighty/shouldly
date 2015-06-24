@@ -10,15 +10,6 @@ namespace Shouldly.Tests.ShouldNotThrow
     {
         protected override void ShouldThrowAWobbly()
         {
-            /*Should.NotThrow(() =>
-            {
-                var task = Task.Factory.StartNew(() => { throw new RankException(); },
-                    CancellationToken.None, TaskCreationOptions.None,
-                    TaskScheduler.Default);
-                return task;
-             * 
-            }, "Some additional context")*/;
-
             var task = Task.Factory.StartNew(() => { throw new RankException(); },
                 CancellationToken.None, TaskCreationOptions.None,
                 TaskScheduler.Default);
