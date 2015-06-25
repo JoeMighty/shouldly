@@ -29,22 +29,12 @@ Some additional context";
 
         protected override void ShouldPass()
         {
+            Task<string> task = Task.Factory.StartNew(() => "Foo",
+                CancellationToken.None, TaskCreationOptions.None,
+                TaskScheduler.Default);
 
-            /*var task= Task.Factory.StartNew(() => "Foo",
-                    CancellationToken.None, TaskCreationOptions.None,
-                    TaskScheduler.Default);
-
-            var res = task.ShouldNotThrow();*/
-
-            //TODO: How to test for returned string?
-            Should.NotThrow(() =>
-            {
-                Task<string> task = Task.Factory.StartNew(() => "Foo",
-                    CancellationToken.None, TaskCreationOptions.None,
-                    TaskScheduler.Default);
-                return task;
-            }).ShouldBe("Foo");
-
+            var result = task.ShouldNotThrow();
+            result.ShouldBe("Foo");
         }
     }
 }
