@@ -182,7 +182,6 @@ namespace Shouldly
             return NotThrow(action, customMessage);
         }
 
-        //TODO: Carry on from here
         /*** Should.NotThrow(Task<T>) ***/
         public static T NotThrow<T>(Task<T> action)
         {
@@ -200,11 +199,11 @@ namespace Shouldly
         /*** ShouldNotThrow(Func<Task>) ***/
         public static void ShouldNotThrow(this Func<Task> action)
         {
-            NotThrow(action, () => null);
+            NotThrow(action);
         }
         public static void ShouldNotThrow(this Func<Task> action, string customMessage)
         {
-            NotThrow(action, () => customMessage);
+            NotThrow(action, customMessage);
         }
         public static void ShouldNotThrow(this Func<Task> action, [InstantHandle] Func<string> customMessage)
         {
@@ -228,15 +227,15 @@ namespace Shouldly
         /*** ShouldNotThrow(Task, TimeSpan) ***/
         public static void ShouldNotThrow(this Task action, TimeSpan timeoutAfter)
         {
-            NotThrow(action, timeoutAfter, () => null);
+            NotThrow(action, timeoutAfter);
         }
         public static void ShouldNotThrow(this Task action, TimeSpan timeoutAfter, string customMessage)
         {
-            NotThrow(action, timeoutAfter, () => customMessage);
+            NotThrow(action, timeoutAfter, customMessage);
         }
         public static void ShouldNotThrow(this Task action, TimeSpan timeoutAfter, [InstantHandle] Func<string> customMessage)
         {
-            NotThrow(() => action, timeoutAfter, customMessage);
+            NotThrow(action, timeoutAfter, customMessage);
         }
 
         /*** Should.NotThrow(Task, TimeSpan) ***/
@@ -256,11 +255,15 @@ namespace Shouldly
         /*** ShouldNotThrow(Func<Task>, TimeSpan) ***/
         public static void ShouldNotThrow(this Func<Task> action, TimeSpan timeoutAfter)
         {
-            NotThrow(action, timeoutAfter, () => null);
+            NotThrow(action, timeoutAfter);
         }
         public static void ShouldNotThrow(this Func<Task> action, TimeSpan timeoutAfter, string customMessage)
         {
-            NotThrow(action, timeoutAfter, () => customMessage);
+            NotThrow(action, timeoutAfter, customMessage);
+        }
+        public static void ShouldNotThrow([InstantHandle] Func<Task> action, TimeSpan timeoutAfter, [InstantHandle] Func<string> customMessage)
+        {
+            NotThrow(action, timeoutAfter, customMessage);
         }
 
         /*** Should.NotThrow(Func<Task>, TimeSpan) ***/
@@ -295,11 +298,15 @@ namespace Shouldly
         /*** ShouldNotThrow(Func<Task<T>>) ***/
         public static T ShouldNotThrow<T>(this Func<Task<T>> action)
         {
-            return NotThrow(action, () => null);
+            return NotThrow(action);
         }
         public static T ShouldNotThrow<T>(this Func<Task<T>> action, string customMessage)
         {
-            return NotThrow(action, () => customMessage);
+            return NotThrow(action, customMessage);
+        }
+        public static T ShouldNotThrow<T>([InstantHandle] Func<Task<T>> action, [InstantHandle] Func<string> customMessage)
+        {
+            return NotThrow(action, customMessage);
         }
 
         /*** Should.NotThrow(Func<Task<T>>) ***/
@@ -319,11 +326,11 @@ namespace Shouldly
         /*** ShouldNotThrow(Task<T>, TimeSpan) ***/
         public static T ShouldNotThrow<T>(this Task<T> action, TimeSpan timeoutAfter)
         {
-            return NotThrow(action, timeoutAfter, () => null);
+            return NotThrow(action, timeoutAfter);
         }
         public static T ShouldNotThrow<T>(this Task<T> action, TimeSpan timeoutAfter, string customMessage)
         {
-            return NotThrow(action, timeoutAfter, () => customMessage);
+            return NotThrow(action, timeoutAfter, customMessage);
         }
         public static T ShouldNotThrow<T>(this Task<T> action, TimeSpan timeoutAfter, [InstantHandle] Func<string> customMessage)
         {
@@ -347,11 +354,15 @@ namespace Shouldly
         /*** ShouldNotThrow(Func<Task<T>>, TimeSpan) ***/
         public static T ShouldNotThrow<T>(this Func<Task<T>> action, TimeSpan timeoutAfter)
         {
-            return NotThrow(action, timeoutAfter, () => null);
+            return NotThrow(action, timeoutAfter);
         }
         public static T ShouldNotThrow<T>(this Func<Task<T>> action, TimeSpan timeoutAfter, string customMessage)
         {
-            return NotThrow(action, timeoutAfter, () => customMessage);
+            return NotThrow(action, timeoutAfter, customMessage);
+        }
+        public static T ShouldNotThrow<T>([InstantHandle] Func<Task<T>> action, TimeSpan timeoutAfter, [InstantHandle] Func<string> customMessage)
+        {
+            return NotThrow(action, timeoutAfter, customMessage);
         }
 
         /*** Should.NotThrow(Func<Task<T>>, TimeSpan) ***/
