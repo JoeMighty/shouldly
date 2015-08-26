@@ -173,6 +173,7 @@ namespace Shouldly
             new DictionaryShouldNotContainValueForKeyMessageGenerator(),
             new ShouldBeWithinRangeMessageGenerator(), 
             new ShouldContainWithinRangeMessageGenerator(),
+            new ShouldBeEnumerableMessageGenerator(),
             new ShouldBeUniqueMessageGenerator(), 
             new ShouldContainMessageGenerator(), 
             new ShouldContainPredicateMessageGenerator(), 

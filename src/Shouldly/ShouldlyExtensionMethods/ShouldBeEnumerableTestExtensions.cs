@@ -214,7 +214,6 @@ namespace Shouldly
                 expected,
                 caseSensitivity,
                 customMessage);
-                
         }
 
         static List<object> GetDuplicates<T>(IEnumerable<T> items)
