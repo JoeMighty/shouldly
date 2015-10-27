@@ -15,7 +15,7 @@ namespace Shouldly.Tests.ShouldBe.WithTolerance
         {
             get
             {
-                return "timeSpan should be within 01:00:00 of 02:06:00 but was 01:00:00" +
+                return "timeSpan should be within 01:00:00 of 02:06:00 but had difference of 01:06:00" +
                        "Additional Info:" +
                        "Some additional context";
             }

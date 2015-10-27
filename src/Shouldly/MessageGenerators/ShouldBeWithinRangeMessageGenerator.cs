@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Linq;
 using Shouldly.DifferenceHighlighting;
 
@@ -21,7 +23,7 @@ namespace Shouldly.MessageGenerators
     {2}
         of
     {3}
-        but was 
+        but had difference of 
     {4}";
 
             var codePart = context.CodePart;
@@ -30,7 +32,10 @@ namespace Shouldly.MessageGenerators
             var actualValue = context.Actual.ToStringAwesomely();
             var negated = context.ShouldMethod.Contains("Not") ? "not " : string.Empty;
 
-            var message = string.Format(format, codePart, negated, tolerance, expectedValue, actualValue);
+            TimeSpan expectedTime = DateTime.ParseExact(expectedValue, "HH:mm:ss", CultureInfo.InvariantCulture).TimeOfDay;
+            TimeSpan actualTime = DateTime.ParseExact(actualValue, "HH:mm:ss", CultureInfo.InvariantCulture).TimeOfDay;
+
+            var message = string.Format(format, codePart, negated, tolerance, expectedValue, expectedTime.Subtract(actualTime));
 
             if (DifferenceHighlighter.CanHighlightDifferences(context))
             {
