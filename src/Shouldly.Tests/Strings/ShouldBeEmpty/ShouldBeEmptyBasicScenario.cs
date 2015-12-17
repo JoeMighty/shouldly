@@ -11,17 +11,17 @@ namespace Shouldly.Tests.Strings.ShouldBeEmpty
     "a".ShouldBeEmpty("Some additional context"),
 
     errorWithSource:
-    @"""a"" should be empty
-    but was
+    @"""a""
+    should be empty but was
 ""a""
 
 Additional Info:
-Some additional context",
+    Some additional context",
 
     errorWithoutSource:
-    @"""a"" should be empty
-    but was
-""a""
+    @"""a""
+    should be empty but was not empty
+
 Additional Info:
     Some additional context");
         }
