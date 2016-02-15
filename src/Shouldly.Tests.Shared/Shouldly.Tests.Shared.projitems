@@ -185,6 +185,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ShouldThrowAsync\FuncOfTaskScenarioAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ShouldThrow\ActionDelegateScenario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ShouldThrow\ActionDelegateThrowsDifferentExceptionScenario.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ShouldThrow\DynamicScenario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ShouldThrow\FuncOfTaskOfStringScenario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ShouldThrow\FuncOfTaskOfStringThrowsDifferentExceptionScenario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ShouldThrow\FuncOfTaskScenario.cs" />
