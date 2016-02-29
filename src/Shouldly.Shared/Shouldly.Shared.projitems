@@ -74,6 +74,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldBeTypeMessageGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldBeUniqueMessageGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldBeWithinRangeMessageGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldBeWithinRangeTimespanMessageGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldCompleteInMessageGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldContainMessageGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MessageGenerators\ShouldContainPredicateMessageGenerator.cs" />

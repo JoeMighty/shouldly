@@ -227,6 +227,7 @@ namespace Shouldly
             new DictionaryShouldOrNotContainKeyMessageGenerator(),
             new DictionaryShouldNotContainValueForKeyMessageGenerator(),
             new ShouldBeginEndWithMessageGenerator(), 
+            new ShouldBeWithinRangeTimespanMessageGenerator(),
             new ShouldBeWithinRangeMessageGenerator(), 
             new ShouldContainWithinRangeMessageGenerator(),
             new ShouldBeUniqueMessageGenerator(), 
