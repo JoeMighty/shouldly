@@ -39,12 +39,12 @@ namespace Shouldly.MessageGenerators
             object actualType = context.Actual;
 
             message =
-$@"timeSpan (01:00:00) 
-   should be within
+$@"timeSpan (01:00:00)
+    should be within
 01:00:00
     of
 02:06:00
-    but had difference of 
+    but had difference of
 01:06:00";
 
             if (DifferenceHighlighter.CanHighlightDifferences(context))
