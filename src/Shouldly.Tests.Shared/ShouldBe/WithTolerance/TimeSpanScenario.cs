@@ -23,7 +23,7 @@ errorWithSource:
 01:06:00",
 
 errorWithoutSource:
-@"timeSpan (01:00:00)
+@"01:00:00
     should be within
 01:00:00
     of
