@@ -11,7 +11,7 @@ namespace Shouldly.Tests.ShouldBe.WithTolerance
         {
             var timeSpan = TimeSpan.FromHours(1);
             Verify.ShouldFail(() =>
-                timeSpan.ShouldBe(timeSpan.Add(TimeSpan.FromHours(1.1d)), TimeSpan.FromHours(1)),
+                timeSpan.ShouldBe(timeSpan.Add(TimeSpan.FromHours(1.1d)), TimeSpan.FromHours(1), "Some additional context"),
 
 errorWithSource:
 @"timeSpan (01:00:00)
@@ -20,7 +20,10 @@ errorWithSource:
     of
 02:06:00
     but had difference of
-01:06:00",
+01:06:00
+
+Additional Info:
+    Some additional context",
 
 errorWithoutSource:
 @"01:00:00
@@ -29,7 +32,10 @@ errorWithoutSource:
     of
 02:06:00
     but had difference of
-01:06:00");
+01:06:00
+
+Additional Info:
+    Some additional context");
         }
 
         [Fact]

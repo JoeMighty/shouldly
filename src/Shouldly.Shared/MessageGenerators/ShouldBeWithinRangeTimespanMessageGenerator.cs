@@ -14,17 +14,19 @@ namespace Shouldly.MessageGenerators
 
         public override string GenerateErrorMessage(IShouldlyAssertionContext context)
         {
-            var codePart = context.CodePart;
             var tolerance = context.Tolerance.ToStringAwesomely();
+
             var expectedValue = context.Expected.ToStringAwesomely();
             var actualValue = context.Actual.ToStringAwesomely();
 
+            TimeSpan expectedTimeSpan = TimeSpan.Parse(expectedValue);
+            TimeSpan actualTimeSpan = TimeSpan.Parse(actualValue);
+
+            string final = expectedTimeSpan.Subtract(actualTimeSpan).ToString();
             // (codePart == actualValue) = No source
+            string codePart = context.CodePart;
             string actual = codePart == actualValue ? $"{actualValue}" : $"{codePart} ({actualValue})";
-
-            /*var negated = context.ShouldMethod.Contains("Not") ? "not " : string.Empty;*/
-
-            object actualType = context.Actual;
+            
 
             string message = $@"{actual}
     should be within
@@ -32,7 +34,7 @@ namespace Shouldly.MessageGenerators
     of
 {expectedValue}
     but had difference of
-01:06:00";
+{final}";
 
             if (DifferenceHighlighter.CanHighlightDifferences(context))
             {
