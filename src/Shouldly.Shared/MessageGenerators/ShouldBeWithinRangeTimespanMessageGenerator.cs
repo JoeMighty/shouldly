@@ -22,14 +22,15 @@ namespace Shouldly.MessageGenerators
             TimeSpan expectedTimeSpan = TimeSpan.Parse(expectedValue);
             TimeSpan actualTimeSpan = TimeSpan.Parse(actualValue);
 
-            string final = expectedTimeSpan.Subtract(actualTimeSpan).ToString();
+            string final = context.ShouldMethod.Contains("Not") ? actualValue : expectedTimeSpan.Subtract(actualTimeSpan).ToString();
             // (codePart == actualValue) = No source
             string codePart = context.CodePart;
             string actual = codePart == actualValue ? $"{actualValue}" : $"{codePart} ({actualValue})";
-            
+            string negated = context.ShouldMethod.Contains("Not") ? "not " : string.Empty;
+
 
             string message = $@"{actual}
-    should be within
+    should {negated}be within
 {tolerance}
     of
 {expectedValue}

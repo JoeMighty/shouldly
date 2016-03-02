@@ -15,7 +15,7 @@ namespace Shouldly.Tests.ShouldNotBe.WithTolerance
 timeSpan.ShouldNotBe(timeSpan.Add(TimeSpan.FromHours(1.1d)), TimeSpan.FromHours(1.5d), "Some additional context"),
 
 errorWithSource:
-@"timeSpan
+@"timeSpan (01:00:00)
     should not be within
 01:30:00
     of
