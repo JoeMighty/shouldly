@@ -33,9 +33,22 @@ namespace Shouldly.MessageGenerators
     should {negated}be within
 {tolerance}
     of
-{expectedValue}
+{expectedValue}";
+
+            if (!context.ShouldMethod.Contains("Not"))
+            {
+
+message += $@"
     but had difference of
 {final}";
+
+            }
+            else
+            {
+message += @"
+    but was not";
+            }
+            
 
             if (DifferenceHighlighter.CanHighlightDifferences(context))
             {

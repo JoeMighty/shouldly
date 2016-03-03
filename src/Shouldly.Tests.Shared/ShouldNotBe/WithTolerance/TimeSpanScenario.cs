@@ -11,6 +11,10 @@ namespace Shouldly.Tests.ShouldNotBe.WithTolerance
         public void TimeSpanScenarioShouldFail()
         {
             var timeSpan = TimeSpan.FromHours(1);
+            var res = timeSpan.ToString(); //1:00:00
+            var tolerance = TimeSpan.FromHours(1.5d).ToString(); // 1:30:00
+            var expected = timeSpan.Add(TimeSpan.FromHours(1.1d)).ToString(); // 2:06:00
+
             Verify.ShouldFail(() =>
 timeSpan.ShouldNotBe(timeSpan.Add(TimeSpan.FromHours(1.1d)), TimeSpan.FromHours(1.5d), "Some additional context"),
 
