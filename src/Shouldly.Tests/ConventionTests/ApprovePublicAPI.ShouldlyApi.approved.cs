@@ -514,6 +514,10 @@ namespace Shouldly
         public static System.Threading.Tasks.Task<System.Exception> ShouldThrowAsync(this System.Func<System.Threading.Tasks.Task> actual, [JetBrains.Annotations.InstantHandleAttribute()] System.Func<string> customMessage, System.Type exceptionType) { }
         public static System.Threading.Tasks.Task<TException> ShouldThrowWithMessageAsync<TException>(this System.Threading.Tasks.Task task, string expectedExceptionMessage)
             where TException : System.Exception { }
+        public static System.Threading.Tasks.Task<TException> ShouldThrowWithMessageAsync<TException>(this System.Threading.Tasks.Task task, string expectedExceptionMessage, string customMessage)
+            where TException : System.Exception { }
+        public static System.Threading.Tasks.Task<TException> ShouldThrowWithMessageAsync<TException>(this System.Threading.Tasks.Task task, string expectedExceptionMessage, System.Func<string> customMessage)
+            where TException : System.Exception { }
     }
     [Shouldly.ShouldlyMethodsAttribute()]
     public class static ShouldThrowExtensions
