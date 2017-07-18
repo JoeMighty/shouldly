@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Shouldly - Assertion framework for .NET. The way asserting *Should* be</Description>
-    <TargetFrameworks>net451;net40;net35;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>net451;net40;netstandard1.3</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard1.3</TargetFrameworks>
     <AssemblyName>Shouldly</AssemblyName>
     <PackageId>Shouldly</PackageId>
@@ -11,13 +11,10 @@
     <PackageProjectUrl>http://shouldly.github.com</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/shouldly/shouldly/blob/master/LICENSE.txt</PackageLicenseUrl>
     <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
-    
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <IncludeSymbols>True</IncludeSymbols>
     <IncludeSource>True</IncludeSource>
-
     <ComVisible>false</ComVisible>
-
     <AssemblyOriginatorKeyFile>sn.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
@@ -37,11 +34,7 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net35' ">
-    <DefineConstants>$(DefineConstants);ShouldMatchApproved;StackTrace;Serializable;CallerMemberNamePolyfill;ZipPolyfill</DefineConstants>
-  </PropertyGroup>
-
+  
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
     <DefineConstants>$(DefineConstants);ShouldMatchApproved;StackTrace;Dynamic;Serializable;Async;ExpressionTrees;CallerMemberNamePolyfill</DefineConstants>
   </PropertyGroup>
