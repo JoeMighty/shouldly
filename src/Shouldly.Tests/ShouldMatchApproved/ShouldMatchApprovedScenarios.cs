@@ -5,12 +5,12 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Shouldly.Configuration;
 using Shouldly.Tests.Strings;
 using Xunit;
 
 namespace Shouldly.Tests.ShouldMatchApproved
 {
+    #if ShouldMatchApproved
     public class ShouldMatchApprovedScenarios
     {
         readonly Func<string, string> _scrubber = v => Regex.Replace(v, @"\w:.+?shouldly\\src", "C:\\PathToCode\\shouldly\\src");
@@ -158,4 +158,5 @@ In the meantime use 'ShouldlyConfiguration.DiffTools.RegisterDiffTool()' to add 
             "Foo".ShouldMatchApproved();
         }
     }
+    #endif
 }

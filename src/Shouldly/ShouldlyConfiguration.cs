@@ -42,25 +42,26 @@ namespace Shouldly
         /// <summary>
         /// When set to true shouldly will not try and create better error messages using your source code
         /// </summary>
-        public static IDisposable DisableSourceInErrors()
+#endif
+
+public static IDisposable DisableSourceInErrors()
         {
-            CallContext.LogicalSetData("ShouldlyDisableSourceInErrors", true);
+            CustomCallContext.SetData("ShouldlyDisableSourceInErrors", true);
             return new EnableSourceInErrorsDisposable();
         }
 
         public static bool IsSourceDisabledInErrors()
         {
-            return (bool?) CallContext.LogicalGetData("ShouldlyDisableSourceInErrors") == true;
+            return (bool?) CustomCallContext.GetData("ShouldlyDisableSourceInErrors") == true;
         }
 
         class EnableSourceInErrorsDisposable : IDisposable
         {
             public void Dispose()
             {
-                CallContext.LogicalSetData("ShouldlyDisableSourceInErrors", null);
+                CustomCallContext.SetData("ShouldlyDisableSourceInErrors", null);
             }
         }
-#endif
 
         public static double DefaultFloatingPointTolerance = 0.0d;
         public static TimeSpan DefaultTaskTimeout = TimeSpan.FromSeconds(10);
