@@ -5,12 +5,18 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
+using Shouldly.EquivalencyChecks;
 
 namespace Shouldly
 {
     [ShouldlyMethods]
     public static class ObjectGraphTestExtensions
     {
+        public static void ShouldBeEquivalentToNew(this object actual, object expected, [InstantHandle] Func<string> customMessage)
+        {
+            CompareObjectsRevisted(actual, expected, new List<string>(), new Dictionary<object, IList<object>>(), customMessage);
+        }
+        
         public static void ShouldBeEquivalentTo(this object actual, object expected)
         {
             ShouldBeEquivalentTo(actual, expected, () => null);
@@ -24,6 +30,26 @@ namespace Shouldly
         public static void ShouldBeEquivalentTo(this object actual, object expected, [InstantHandle] Func<string> customMessage)
         {
             CompareObjects(actual, expected, new List<string>(), new Dictionary<object, IList<object>>(), customMessage);
+        }
+
+        private static void CompareObjectsRevisted(object actual, object expected,
+            IList<string> path, IDictionary<object, IList<object>> previousComparisons,
+            [InstantHandle] Func<string> customMessage, [CallerMemberName] string shouldlyMethod = null)
+        {
+            var checks = new List<IEquivalencyCheck>
+            {
+                new StringRule()
+            };
+            
+            checks.ForEach(x => RunChecker(x, actual, expected, previousComparisons));
+        }
+
+        private static void RunChecker(IEquivalencyCheck check, object actual, object expected, IDictionary<object, IList<object>> previousComparisons)
+        {
+            var resultChecks = new List<EquivalencyCheckResult>();
+            var result = check.Compare(actual, expected, previousComparisons);
+            
+            resultChecks.Add(result);
         }
 
         private static void CompareObjects(object actual, object expected,
