@@ -9,7 +9,7 @@ namespace Shouldly.MessageGenerators
 
         public override bool CanProcess(IShouldlyAssertionContext context)
         {
-            return context.ShouldMethod == "ShouldBeEquivalentTo";
+            return context.ShouldMethod == "ShouldBeEquivalentTo" || context.ShouldMethod == "ShouldBeEquivalentToNew";
         }
 
         public override string GenerateErrorMessage(IShouldlyAssertionContext context)

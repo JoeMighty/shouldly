@@ -10,7 +10,7 @@ namespace Shouldly.Tests.ShouldBeEquivalentTo
         {
             string subject = null;
             Verify.ShouldFail(() =>
-subject.ShouldBeEquivalentTo("Hello", "Some additional context"),
+subject.ShouldBeEquivalentToNew("Hello", "Some additional context"),
 
 errorWithSource:
 @"Comparing object equivalence, at path:
@@ -42,7 +42,7 @@ Additional Info:
         {
             const string subject = "Hello";
             Verify.ShouldFail(() =>
-subject.ShouldBeEquivalentTo(null, "Some additional context"),
+subject.ShouldBeEquivalentToNew(null, "Some additional context"),
 
 errorWithSource:
 @"Comparing object equivalence, at path:
@@ -73,7 +73,7 @@ Additional Info:
         public void ShouldPassWhenBothAreNull()
         {
             string subject = null;
-            subject.ShouldBeEquivalentTo(null);
+            subject.ShouldBeEquivalentToNew(null);
         }
     }
 }

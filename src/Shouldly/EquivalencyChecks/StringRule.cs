@@ -1,22 +1,40 @@
+using System;
 using System.Collections.Generic;
 
 namespace Shouldly.EquivalencyChecks
 {
-    public class StringRule : IEquivalencyCheck
+    public abstract class CheckBase
     {
-        public EquivalencyCheckResult Compare(object actual, object expected, IDictionary<object, IList<object>> comparisonTracker)
+        public bool TypeMatches(object actual, object expected)
         {
+            return true;
+        }
+    }
+    
+    public class StringRule : CheckBase, IEquivalencyCheck
+    {
+        public EquivalencyCheckResult Compare(object actual, object expected)
+        {
+            var a = actual as string;
+            var e = expected as string;
+            var result = a != null && a.Equals(e, StringComparison.Ordinal);
             
-            return new EquivalencyCheckResult();
+            return new EquivalencyCheckResult
+            {
+                AreEquivalent = result
+            };
         }
     }
 
     public interface IEquivalencyCheck
     {
-        EquivalencyCheckResult Compare(object actual, object expected, IDictionary<object, IList<object>> comparisonTracker);
+        bool TypeMatches(object actual, object expected);
+        
+        EquivalencyCheckResult Compare(object actual, object expected);
     }
 
     public class EquivalencyCheckResult
     {
+        public bool AreEquivalent { get; set; }
     }
 }
