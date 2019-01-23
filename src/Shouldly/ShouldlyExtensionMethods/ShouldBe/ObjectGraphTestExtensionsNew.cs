@@ -30,14 +30,26 @@ namespace Shouldly
             
             if (new NullRule().Compare(actual, expected).AreEquivalent)
                 return;
-                
+            
+            BuildPath(actual, path);
+            
             var results = CompareObjectsRevisited(actual, expected, path, previousComparisons);
 
             foreach (var result in results)
             {
                 if (!result.AreEquivalent)
-                    AssertResults(actual, expected, new List<string>(), customMessage);
+                    AssertResults(actual, expected, path, customMessage);
             }
+        }
+
+        public static void BuildPath(object type, IList<string> path)
+        {
+            var actualType = type.GetType();
+            var typeName = $" [{actualType.FullName}]";
+            if (path.Count == 0)
+                path.Add(typeName);
+            else
+                path[path.Count - 1] += typeName;
         }
         
         private static void AssertResults(object actual, object expected, IList<string> path,

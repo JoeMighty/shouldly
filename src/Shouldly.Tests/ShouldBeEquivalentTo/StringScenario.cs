@@ -10,7 +10,7 @@ namespace Shouldly.Tests.ShouldBeEquivalentTo
         {
             const string subject = "Hello";
             Verify.ShouldFail(() =>
-subject.ShouldBeEquivalentToNew("Goodbye", "Some additional context"),
+subject.ShouldBeEquivalentTo("Goodbye", "Some additional context"),
 
 errorWithSource:
 @"Comparing object equivalence, at path:

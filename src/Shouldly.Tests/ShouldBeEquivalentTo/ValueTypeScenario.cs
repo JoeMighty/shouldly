@@ -10,7 +10,7 @@ namespace Shouldly.Tests.ShouldBeEquivalentTo
         {
             const int subject = 5;
             Verify.ShouldFail(() =>
-subject.ShouldBeEquivalentTo(3, "Some additional context"),
+subject.ShouldBeEquivalentToNew(3, "Some additional context"),
 
 errorWithSource:
 @"Comparing object equivalence, at path:
@@ -41,7 +41,7 @@ Additional Info:
         public void ShouldPass()
         {
             const int subject = 5;
-            subject.ShouldBeEquivalentTo(5);
+            subject.ShouldBeEquivalentToNew(5);
         }
     }
 }

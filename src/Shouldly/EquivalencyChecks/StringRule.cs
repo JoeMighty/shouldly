@@ -3,16 +3,23 @@ using System.Collections.Generic;
 
 namespace Shouldly.EquivalencyChecks
 {
-    public abstract class CheckBase
+/*    public abstract class CheckBase
     {
         public bool TypeMatches(object actual, object expected)
         {
             return true;
         }
-    }
+    }*/
     
-    public class StringRule : CheckBase, IEquivalencyCheck
+    public class StringRule : IEquivalencyCheck
     {
+        public bool TypeMatches(object actual, object expected)
+        {
+            var type = actual;
+
+            return false;
+        }
+
         public EquivalencyCheckResult Compare(object actual, object expected)
         {
             var a = actual as string;
